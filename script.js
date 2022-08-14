@@ -1,7 +1,7 @@
 let choicesList = ["rock", "paper", "scissors"];
 
 function getComputerChoice(){
-    return Math.floor((Math.random() * 3) + 1) - 1;
+    return choicesList[Math.floor((Math.random() * 3) + 1) - 1];
 }
 
 function checkWinner(choice1, choice2){
@@ -12,7 +12,7 @@ function checkWinner(choice1, choice2){
     return false;
 }
 
-function playRPS(playerChoice, computerChoice){
+function playRound(playerChoice, computerChoice){
     let lowerPlayer = playerChoice.toLowerCase();
     let lowerComputer = computerChoice.toLowerCase();
     let capitalPlayer = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1);
@@ -25,4 +25,8 @@ function playRPS(playerChoice, computerChoice){
         return `You lose... ${capitalComputer} beats ${capitalPlayer}`
 }
 
-console.log(getComputerChoice())
+const playerChoice = "rock";
+const computerChoice = getComputerChoice();
+
+
+console.log(playRound(playerChoice,computerChoice))
