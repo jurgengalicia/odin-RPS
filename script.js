@@ -27,7 +27,7 @@ function playRound(playerChoice, computerChoice){
     }
     else{
         scores["computer"]++;
-        return `You lose. You played: ${capitalPlayer}, and that loses to ${capitalComputer}(computer)`
+        return `You lose... You played: ${capitalPlayer}, and that loses to ${capitalComputer}(computer)`
     }
 }
 
