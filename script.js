@@ -27,22 +27,24 @@ function playRound(playerChoice, computerChoice){
     }
     else{
         scores["computer"]++;
-        return `You lose... You played: ${capitalPlayer}, and that loses to ${capitalComputer}(computer)`
+        return `You lose. You played: ${capitalPlayer}, and that loses to ${capitalComputer}(computer)`
     }
 }
 
 const playerChoice = "rock";
 
-for(let i = 0; i <= 5; i++){
-    let userPrompt = prompt("Play your choice! Rock, Paper, or Scissors?","rock").trim().toLocaleLowerCase();
-    let computerChoice = getComputerChoice();
-    if(!choicesList.includes(userPrompt)){
-        console.log("Please try again, make sure you type either Rock, Paper or Scissors")
-        i--;
+function game(){
+    for(let i = 0; i <= 5; i++){
+        let userPrompt = prompt("Play your choice! Rock, Paper, or Scissors?","rock").trim().toLocaleLowerCase();
+        let computerChoice = getComputerChoice();
+        if(!choicesList.includes(userPrompt)){
+            console.log("Please try again, make sure you type either Rock, Paper or Scissors")
+            i--;
+        }
+        else
+            console.log(playRound(userPrompt, computerChoice));
     }
-    else
-        console.log(playRound(userPrompt, computerChoice));
-    console.log(scores);
+    console.log(`out of 5 games, you won ${scores["player"]} times against the computer, who won ${scores["computer"]} times`)
 }
 
-console.log(`out of 5 games, you won ${scores["player"]} times against the computer, who won ${scores["computer"]} times`)
+game();
