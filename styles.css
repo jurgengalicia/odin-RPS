@@ -2,11 +2,35 @@
     box-sizing: border-box;
 }
 
-.choices-container{
+body{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.choices-container,.tally-container{
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2px;
+}
+
+.scoreboard{
+    display: flex;
+    padding: 15px;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.tally{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
 }
 
 .choice{
