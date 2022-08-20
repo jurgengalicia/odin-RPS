@@ -13,25 +13,23 @@ function checkWinner(choice1, choice2){
     return false;
 }
 
-function playRound(playerChoice, computerChoice){
-    let lowerPlayer = playerChoice.toLowerCase();
-    let lowerComputer = computerChoice.toLowerCase();
+function playRound(){
+    let computerChoice = getComputerChoice();
+    let playerChoice = this.id;
     let capitalPlayer = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1);
     let capitalComputer = computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
-    if(lowerComputer === lowerPlayer){
-        return "It's a draw!"
+    if(computerChoice === playerChoice){
+        announce.textContent = "It's a draw!"
     }
-    else if(checkWinner(lowerPlayer,lowerComputer)){
+    else if(checkWinner(playerChoice,computerChoice)){
         scores["player"]++;
-        return `You win! You played: ${capitalPlayer}, and that beats ${capitalComputer}(computer)`
+        announce.textContent =  `You win! You played: ${capitalPlayer}, and that beats ${capitalComputer}(computer)`;
     }
     else{
         scores["computer"]++;
-        return `You lose... You played: ${capitalPlayer}, and that loses to ${capitalComputer}(computer)`
+        announce.textContent =  `You lose... You played: ${capitalPlayer}, and that loses to ${capitalComputer}(computer)`;
     }
 }
-
-const playerChoice = "rock";
 
 function game(){
     for(let i = 0; i <= 5; i++){
@@ -47,4 +45,17 @@ function game(){
     console.log(`out of 5 games, you won ${scores["player"]} times against the computer, who won ${scores["computer"]} times`)
 }
 
-game();
+function clickChoice(){
+    console.log(this.classList[0]);
+}
+    
+
+
+let choices = document.querySelectorAll('.choice');
+let announce  = document.querySelector('.win-text');
+
+choices.forEach(choice => {
+    choice.addEventListener('click', playRound)
+});
+
+//game();

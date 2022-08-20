@@ -1,0 +1,15 @@
+*{
+    box-sizing: border-box;
+}
+
+.choices-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.choice{
+    border: red 1px solid;
+    padding: 2px;
+}
