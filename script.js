@@ -8,14 +8,18 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let humanChoice = prompt("Please enter your hand choice", "Rock").toLowerCase();
+    let humanChoice = prompt("Please enter your hand choice: rock, paper or scissors", "Rock").toLowerCase();
     return humanChoice;
 }
 
+function pluralize(word, num){
+    return num == 1 ? word : `${word}s`
+}
+
 function playRound(compChoice,humanChoice){
-    console.log("compChoice test", compChoice);
-    console.log("humanChoice test", humanChoice);
     let scoreingSheet = {"rock":"scissors", "scissors":"paper", "paper":"rock"}
+    console.log(`Your choice: ${humanChoice}`)
+    console.log(`Computer's choice: ${compChoice}`)
     if(scoreingSheet[compChoice] === humanChoice){
         computerScore += 1;
         console.log(`You lose this round, ${compChoice} beats ${humanChoice}`)
@@ -25,8 +29,7 @@ function playRound(compChoice,humanChoice){
     } else {
         console.log("its a tie");
     }
-    console.log("human score",humanScore);
-    console.log("computer score",computerScore);
+    console.log(`Current score, you: ${humanScore}, computer: ${computerScore}`)
 }
 
 function playGame(){
@@ -34,9 +37,9 @@ function playGame(){
         playRound(getComputerChoice(), getHumanChoice())
     }
     if(humanScore > computerScore){
-        console.log(`You win the game! You scored ${humanScore} points when the computer got ${computerScore} points.`)
+        console.log(`You win the game! You scored ${humanScore} ${pluralize('point',humanScore)} when the computer got ${computerScore} ${pluralize('point',computerScore)}.`)
     } else if (humanScore < computerScore) {
-        console.log(`You lose the game. The computer got ${computerScore} points while you scored ${humanScore} points.`)
+        console.log(`You lose the game. The computer got ${computerScore} ${pluralize('point',computerScore)} while you scored ${humanScore} ${pluralize('point',humanScore)}.`)
     } else {
         console.log("It's a draw! Play another game?")
     }
