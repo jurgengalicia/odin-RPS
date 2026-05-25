@@ -40,6 +40,7 @@ function playGame(){
         console.log(`You lose the game. The computer got ${computerScore} ${pluralize('point',computerScore)} while you scored ${humanScore} ${pluralize('point',humanScore)}.`)
     } else {
         console.log("It's a draw! Play another game?")
+        let replay = prompt("Would you like to play again?", "yes") == "yes" ? playGame(): "";
     }
 }
 
