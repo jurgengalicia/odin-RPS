@@ -29,9 +29,9 @@ function playRound(compChoice,humanChoice,tally){
 function playGame(){
     let tally = {humanScore: 0, computerScore: 0};
 
-    for(let i = 0; i < 5; i++){
-        playRound(getComputerChoice(), getHumanChoice(),tally)
-    }
+    // for(let i = 0; i < 5; i++){
+    //     playRound(getComputerChoice(), getHumanChoice(),tally)
+    // }
     let humanScore = tally.humanScore;
     let computerScore = tally.computerScore;
     if(humanScore > computerScore){
@@ -44,4 +44,4 @@ function playGame(){
     }
 }
 
-playGame();
+// playGame();
