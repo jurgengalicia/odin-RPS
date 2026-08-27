@@ -20,3 +20,12 @@ button{
     height: 100vh;
 }
 
+.display-banner{
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+

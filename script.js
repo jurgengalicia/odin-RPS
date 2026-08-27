@@ -1,3 +1,13 @@
+let buttonList = [document.querySelector(".rock-el"), document.querySelector(".paper-el"), document.querySelector(".scissors-el")];
+let tally = {humanScore: 0, computerScore: 0};
+
+for(let i = 0; i <= 2; i++){
+    let currButton = buttonList[i];
+    currButton.addEventListener('click', e =>  playRound(getComputerChoice(), buttonList[i].textContent.toLowerCase() ,tally) )
+
+}
+
+
 function getComputerChoice() {
     let handOptions = ["rock", "paper", "scissors"]
     let pickHand = Math.floor(Math.random() * 3);
@@ -27,7 +37,7 @@ function playRound(compChoice,humanChoice,tally){
 }
 
 function playGame(){
-    let tally = {humanScore: 0, computerScore: 0};
+    
 
     // for(let i = 0; i < 5; i++){
     //     playRound(getComputerChoice(), getHumanChoice(),tally)
