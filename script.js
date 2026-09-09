@@ -4,7 +4,6 @@ let tally = {humanScore: 0, computerScore: 0};
 for(let i = 0; i <= 2; i++){
     let currButton = buttonList[i];
     currButton.addEventListener('click', e =>  playRound(getComputerChoice(), buttonList[i].textContent.toLowerCase() ,tally) )
-
 }
 
 

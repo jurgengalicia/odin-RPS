@@ -1,5 +1,6 @@
 *{
     box-sizing: border-box;
+    background-color: white;
 }
 
 body{
@@ -17,7 +18,8 @@ button{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 100vh;
+    
+    height: 50vh;
 }
 
 .display-banner{
