@@ -1,15 +1,23 @@
 let buttonList = [document.querySelector(".rock-el"), document.querySelector(".paper-el"), document.querySelector(".scissors-el")];
 let tryAgainButton = document.querySelector(".hide-button")
-let tally = {humanScore: 0, computerScore: 0};
+let tally = {humanScore: 4, computerScore: 4};
 let announceDiv = document.querySelector(".announce-div")
 let roundDiv = document.querySelector(".round-div")
 let tallyDiv = document.querySelector(".tally-div")
 
 
-tryAgainButton.addEventListener('click', e => {
+function resetGame(){
     buttonList.map(x => x.disabled = false)
     this.classList.add("hide-button")
-});
+    tally.humanScore = 0;
+    tally.computerScore = 0;
+    announceDiv.textContent = "Welcome to Rock Paper Scissors! Make your selection to start a game."
+    roundDiv.textContent = ""
+    tallyDiv.textContent = ""
+}
+
+tryAgainButton.addEventListener('click', resetGame);
+
 for(let i = 0; i <= 2; i++){
     let currButton = buttonList[i];
     currButton.addEventListener('click', e =>  playRound(getComputerChoice(), buttonList[i].textContent.toLowerCase() ,tally) )
