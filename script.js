@@ -1,6 +1,6 @@
 let buttonList = [document.querySelector(".rock-el"), document.querySelector(".paper-el"), document.querySelector(".scissors-el")];
 let tryAgainButton = document.querySelector(".hide-button")
-let tally = {humanScore: 4, computerScore: 4};
+let tally = {humanScore: 0, computerScore: 0};
 let announceDiv = document.querySelector(".announce-div")
 let roundDiv = document.querySelector(".round-div")
 let tallyDiv = document.querySelector(".tally-div")
