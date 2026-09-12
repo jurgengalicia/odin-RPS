@@ -1,11 +1,11 @@
 *{
     box-sizing: border-box;
     background-color: white;
+    
 }
 
 body{
     background-color: black;
-    
 }
 
 button{
@@ -21,6 +21,13 @@ button{
     height: 50vh;
 }
 
+.hide-button{
+    visibility: hidden;
+}
+
+
+
+
 .button-banner-combo{
     display: flex;
     flex-direction: column;
@@ -31,7 +38,7 @@ button{
 .display-banner{
     height: 200px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     

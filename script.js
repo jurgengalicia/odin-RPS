@@ -1,6 +1,15 @@
 let buttonList = [document.querySelector(".rock-el"), document.querySelector(".paper-el"), document.querySelector(".scissors-el")];
+let tryAgainButton = document.querySelector(".hide-button")
 let tally = {humanScore: 0, computerScore: 0};
+let announceDiv = document.querySelector(".announce-div")
+let roundDiv = document.querySelector(".round-div")
+let tallyDiv = document.querySelector(".tally-div")
 
+
+tryAgainButton.addEventListener('click', e => {
+    buttonList.map(x => x.disabled = false)
+    this.classList.add("hide-button")
+});
 for(let i = 0; i <= 2; i++){
     let currButton = buttonList[i];
     currButton.addEventListener('click', e =>  playRound(getComputerChoice(), buttonList[i].textContent.toLowerCase() ,tally) )
@@ -13,6 +22,12 @@ function getComputerChoice() {
     return handOptions[pickHand];
 }
 
+function createChildPara(ParaText){
+    let result = document.createElement("p")
+    result.createTextNode(ParaText);
+    return result;
+}
+
 // prompt user for a choice
 let getHumanChoice = () => prompt("Please enter your hand choice: rock, paper or scissors", "Rock").toLowerCase();
 
@@ -21,36 +36,30 @@ let pluralize = (word, num) => num == 1 ? word : `${word}s`;
 
 function playRound(compChoice,humanChoice,tally){
     let scoreingSheet = {"rock":"scissors", "scissors":"paper", "paper":"rock"}
-    console.log(`Your choice: ${humanChoice}`)
-    console.log(`Computer's choice: ${compChoice}`)
+    announceDiv.textContent = `Your choice: ${humanChoice} | Computer's choice: ${compChoice}`;
     if(scoreingSheet[compChoice] === humanChoice){
         tally.computerScore += 1;
-        console.log(`You lose this round, ${compChoice} beats ${humanChoice}`)
+        roundDiv.textContent = `You lose this round, ${compChoice} beats ${humanChoice}`
     } else if(scoreingSheet[humanChoice] === compChoice){
         tally.humanScore += 1; 
-        console.log(`You win this round! ${humanChoice} beats ${compChoice}`)
+        roundDiv.textContent = `You win this round! ${humanChoice} beats ${compChoice}`
     } else {
-        console.log("its a tie");
+        roundDiv.textContent = "its a tie"
     }
-    console.log(`Current score, you: ${tally.humanScore}, computer: ${tally.computerScore}`)
-}
+    tallyDiv.textContent = `Current score, you: ${tally.humanScore}, computer: ${tally.computerScore}`
 
-function playGame(){
-    
-
-    // for(let i = 0; i < 5; i++){
-    //     playRound(getComputerChoice(), getHumanChoice(),tally)
-    // }
     let humanScore = tally.humanScore;
     let computerScore = tally.computerScore;
-    if(humanScore > computerScore){
-        console.log(`You win the game! You scored ${humanScore} ${pluralize('point',humanScore)} when the computer got ${computerScore} ${pluralize('point',computerScore)}.`)
-    } else if (humanScore < computerScore) {
-        console.log(`You lose the game. The computer got ${computerScore} ${pluralize('point',computerScore)} while you scored ${humanScore} ${pluralize('point',humanScore)}.`)
-    } else {
-        console.log("It's a draw! Play another game?")
-        let replay = prompt("Would you like to play again?", "yes") == "yes" ? playGame(): "";
+
+    if(computerScore == 5 || humanScore == 5){
+        if(humanScore > computerScore){
+            announceDiv.textContent = `You win the game! You scored ${humanScore} ${pluralize('point',humanScore)} when the computer got ${computerScore} ${pluralize('point',computerScore)}.`;
+        } else if (humanScore < computerScore) {
+            announceDiv.textContent = `You lose the game. The computer got ${computerScore} ${pluralize('point',computerScore)} while you scored ${humanScore} ${pluralize('point',humanScore)}.`;
+        }
+        roundDiv.textContent = "Would you like to play again?";
+        tryAgainButton.classList.remove("hide-button")
+        buttonList.map(x => x.disabled = true)
     }
 }
 
-// playGame();
